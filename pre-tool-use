@@ -29,7 +29,7 @@ LOG_FILE = os.path.expanduser("~/.claude/hooks/blocked.log")
 
 DANGEROUS_PATTERNS = [
     # rm -rf (recursive force delete)
-    (re.compile(r'\brm\s+(-[rf]+|-[rf]\w*)\s+'), "rm -rf: Recursive force delete"),
+    (re.compile(r'\brm\s+(-[rf]{2,})\s+'), "rm -rf: Recursive force delete"),
     # DROP TABLE
     (re.compile(r'\bDROP\s+TABLE\b', re.IGNORECASE), "DROP TABLE: Destructive SQL operation"),
     # git push --force / git push -f
